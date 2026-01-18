@@ -1,14 +1,9 @@
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-  <div class="col mb-4">
-    <div class="card" [id]="product.id">
-      <img [src]="product.imageUrl" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">
-          {{ product.description }}
-        </p>
-        <a href="#" class="btn btn-primary">Comprar</a>
-      </div>
-    </div>
+<div class="card h-100">
+  <img [src]="product.imageUrl" class="card-img-top" />
+
+  <div class="card-body d-flex flex-column">
+    <h5>{{ product.name }}</h5>
+    <p class="flex-grow-1">{{ product.description }}</p>
+    <button class="btn btn-primary mt-auto">Comprar</button>
   </div>
 </div>
