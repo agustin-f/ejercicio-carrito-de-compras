@@ -1,3 +1,4 @@
+import { ProductCard } from '../components/product-card/product-card';
 import { Product } from '../models/product.model';
 
 export const PRODUCTS: Product[] = [
