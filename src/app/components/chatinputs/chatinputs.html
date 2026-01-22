@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <form
+    class="d-flex gap-2"
+    (submit)="$event.preventDefault()"
+    (ngSubmit)="enviarMensaje(user, mensaje)"
+  >
+    <input class="form-control" placeholder="Tu nombre" #user />
+    <input class="form-control" placeholder="Escribí tu mensaje" #mensaje />
+    <button class="btn btn-primary">Enviar</button>
+  </form>
+
+  <div class="mt-4">
+    @for (msg of mensajes(); track $index) {
+      <div class="mb-2" [class.text-end]="msg.user !== 'Bot'">
+        <strong>{{ msg.user }}</strong>
+        <p class="mb-0">{{ msg.text }}</p>
+        <small class="text-muted">
+          {{ msg.time | date: 'shortTime' }}
+        </small>
+      </div>
+    }
+  </div>
+</div>
