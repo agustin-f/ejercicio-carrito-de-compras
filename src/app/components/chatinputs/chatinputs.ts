@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { ModalService } from '../../services/servicio-prueba';
 
 export interface ChatMessage {
   user: string;
@@ -16,12 +17,19 @@ export interface ChatMessage {
   styleUrl: './chatinputs.css',
 })
 export class Chatinputs {
+  constructor(private modalService: ModalService) {}
+
   // 👇 estado reactivo
   mensajes = signal<ChatMessage[]>([]);
 
   enviarMensaje(userInput: HTMLInputElement, messageInput: HTMLInputElement) {
     const text = messageInput.value.trim();
     const user = userInput.value.trim() || 'Usuario';
+
+    this.modalService.abrir({
+      titulo: 'Nuevo mensaje',
+      mensaje: `Usuario: ${user}\nMensaje: ${text}`,
+    });
 
     if (!text) return;
 
