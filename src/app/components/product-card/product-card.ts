@@ -19,7 +19,7 @@ export class ProductCard {
   agregarProducto() {
     this.modalService.abrir({
       titulo: 'Compra realizada',
-      mensaje: `Acabas de comprar: ${this.product.name} por $${this.product.price}`,
+      mensaje: `Acabas de comprar: ${this.product.name} por $${this.product.precio}`,
     });
 
     this.cartService.add(this.product);

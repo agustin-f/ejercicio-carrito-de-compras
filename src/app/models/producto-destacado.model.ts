@@ -3,7 +3,7 @@ export interface ProductoDest {
   imageUrl: string;
   name: string;
   description: string;
-  price: number;
+  precio: number;
   offer: string;
   tags: string[];
 }

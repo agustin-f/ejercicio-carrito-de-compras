@@ -1,13 +1,13 @@
 <div class="card h-100">
-  <img [src]="ProductoDest.imageUrl" class="card-img-top" />
+  <img [src]="productoDest.imageUrl" class="card-img-top" />
 
   <div class="card-body d-flex flex-column">
     <h5>
-      {{ ProductoDest.name }} <span class="badge badge-secondary">{{ ProductoDest.offer }}</span>
+      {{ productoDest.name }} <span class="badge badge-secondary">{{ productoDest.offer }}</span>
     </h5>
 
-    <span class="badge badge-secondary">{{ ProductoDest.tags }}</span>
-    <p class="flex-grow-1">{{ ProductoDest.description }}</p>
-    <button class="btn btn-primary" (click)="agregarProducto()">Comprar</button>
+    <span class="badge badge-secondary">{{ productoDest.tags }}</span>
+    <p class="flex-grow-1">{{ productoDest.description }}</p>
+    <button class="btn btn-primary" type="button" (click)="agregarProducto()">Comprar</button>
   </div>
 </div>
