@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { ProductCard } from './components/product-card/product-card';
-import { BannerHome } from './components/banner-home/banner-home';
 import { CartPage } from './pages/cart-page/cart-page';
 import { CartSummary } from './components/cart-summary/cart-summary';
+import { ProductosDestacados } from './pages/productos-destacados/productos-destacados';
 
 export const routes: Routes = [
   { path: '', component: CartPage },
-  { path: 'productos', component: CartSummary },
+  { path: 'destacados', component: ProductosDestacados },
+  { path: 'contacto', component: CartSummary },
   { path: '**', redirectTo: '' },
 ];

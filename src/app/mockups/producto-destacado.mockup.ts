@@ -1,12 +1,14 @@
-import { Product } from '../models/product.model';
+import { ProductoDest } from '../models/producto-destacado.model';
 
-export const PRODUCTS: Product[] = [
+export const PRODUCTS: ProductoDest[] = [
   {
     id: 1,
     imageUrl: 'https://images.pexels.com/photos/11035543/pexels-photo-11035543.jpeg',
     name: 'Curso Angular',
     description: 'Aprendé las bases del framework Angular y los fundamentos de TypeScript.',
     price: 25000,
+    offer: 'Oferta',
+    tags: ['angular', 'typescript', 'frontend'],
   },
   {
     id: 2,
@@ -14,6 +16,8 @@ export const PRODUCTS: Product[] = [
     name: 'Curso UX/UI',
     description: 'Diseño centrado en el usuario, wireframes, prototipos y pruebas de usabilidad.',
     price: 18000,
+    offer: 'Sin stock',
+    tags: ['ux', 'ui', 'diseño'],
   },
   {
     id: 3,
@@ -21,6 +25,8 @@ export const PRODUCTS: Product[] = [
     name: 'Curso JavaScript Avanzado',
     description: 'Domina closures, promesas, async/await y patrones modernos de JavaScript.',
     price: 22000,
+    offer: 'Oferta',
+    tags: ['javascript', 'programación', 'web'],
   },
   {
     id: 4,
@@ -28,6 +34,8 @@ export const PRODUCTS: Product[] = [
     name: 'Curso HTML & CSS',
     description: 'Maquetación moderna, Flexbox, Grid y buenas prácticas para la web.',
     price: 15000,
+    offer: 'Oferta imperdible',
+    tags: ['html', 'css', 'web'],
   },
   {
     id: 5,
@@ -35,5 +43,7 @@ export const PRODUCTS: Product[] = [
     name: 'Curso Git & GitHub',
     description: 'Control de versiones, flujos de trabajo y colaboración en equipo.',
     price: 12000,
+    offer: 'Sin stock',
+    tags: ['git', 'github', 'versiones'],
   },
 ];
