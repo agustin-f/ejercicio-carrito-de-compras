@@ -7,10 +7,10 @@ import { LoginPage } from './pages/login-page/login-page';
 import { ContactoPage } from './pages/contacto-page/contacto-page';
 
 export const routes: Routes = [
-  { path: '', component: CartPage, canActivate: [authGuard] },
-  { path: 'destacados', component: ProductosDestacados, canActivate: [authGuard] },
-  { path: 'contacto', component: ContactoPage },
-  { path: 'carrito', component: ListadoDeCompras, canActivate: [authGuard] },
+  { path: '', component: CartPage },
+  { path: 'destacados', component: ProductosDestacados },
+  { path: 'contacto', component: ContactoPage, canActivate: [authGuard] },
+  { path: 'carrito', component: ListadoDeCompras },
   { path: 'login', component: LoginPage },
   { path: '**', redirectTo: '' },
 ];

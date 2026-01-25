@@ -1,7 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common';
-import { ModalService } from '../../services/servicio-prueba';
+import { Component, signal, inject, computed } from '@angular/core';
+import { AuthService } from '../../services/auth-service';
 
 export interface ChatMessage {
   user: string;
@@ -12,38 +10,39 @@ export interface ChatMessage {
 @Component({
   selector: 'app-chatinputs',
   standalone: true,
-  imports: [FormsModule, DatePipe],
   templateUrl: './chatinputs.html',
   styleUrl: './chatinputs.css',
 })
 export class Chatinputs {
-  constructor(private modalService: ModalService) {}
+  private authService = inject(AuthService);
 
-  // 👇 estado reactivo
+  // usuario auth
+  userAuth = this.authService.user;
+
+  // nombre visible (logueado o invitado)
+  nombreDefault = computed(() => {
+    const u = this.userAuth();
+    return u?.displayName ?? u?.email ?? 'Invitado';
+  });
+
+  // mensajes
   mensajes = signal<ChatMessage[]>([]);
 
-  enviarMensaje(userInput: HTMLInputElement, messageInput: HTMLInputElement) {
-    const text = messageInput.value.trim();
-    const user = userInput.value.trim() || 'Usuario';
-
-    this.modalService.abrir({
-      titulo: 'Nuevo mensaje',
-      mensaje: `Usuario: ${user}\nMensaje: ${text}`,
-    });
-
+  enviarMensaje(input: HTMLInputElement) {
+    const text = input.value.trim();
     if (!text) return;
 
     // mensaje del usuario
     this.mensajes.update((actual) => [
       ...actual,
       {
-        user,
+        user: this.nombreDefault(),
         text,
         time: new Date(),
       },
     ]);
 
-    messageInput.value = '';
+    input.value = '';
 
     // respuesta del bot
     setTimeout(() => {
@@ -51,10 +50,22 @@ export class Chatinputs {
         ...actual,
         {
           user: 'Bot',
-          text: 'Gracias por tu mensaje 🤖',
+          text: this.generarRespuestaBot(text),
           time: new Date(),
         },
       ]);
-    }, 800);
+    }, 700);
+  }
+
+  private generarRespuestaBot(mensaje: string): string {
+    if (mensaje.toLowerCase().includes('precio')) {
+      return 'Podés ver los precios en la sección destacados 💰';
+    }
+
+    if (mensaje.toLowerCase().includes('angular')) {
+      return 'Tenemos cursos de Angular desde básico a avanzado 🚀';
+    }
+
+    return 'Gracias por tu mensaje 😊 Te respondemos a la brevedad.';
   }
 }

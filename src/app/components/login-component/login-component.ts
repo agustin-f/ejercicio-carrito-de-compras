@@ -21,7 +21,8 @@ export class LoginComponent {
   ) {}
 
   login() {
-    this.authService.login(this.form.value.email!);
-    this.router.navigateByUrl('/');
+    this.authService.login(this.form.value.email!, this.form.value.password!);
+
+    this.router.navigateByUrl('/'); // o '/home'
   }
 }

@@ -49,11 +49,14 @@
           aria-label="Search"
         />
         <button class="btn btn-outline-success me-2" type="submit">Buscar</button>
-        @if (authService.isLoggedIn()) {
-          <button class="btn btn-outline-danger" (click)="logout()">Salir</button>
-        } @else {
-          <button class="btn btn-primary" routerLink="login">Ingresar</button>
-        }
+        <section class="d-flex align-items-center gap-2">
+          @if (user()) {
+            <span class="text-dark">Hola {{ nombreUsuario() }} 👋</span>
+            <button class="btn btn-outline-danger btn-sm" (click)="logout()">Salir</button>
+          } @else {
+            <button class="btn btn-primary" routerLink="/login">Ingresar</button>
+          }
+        </section>
       </form>
     </div>
   </div>

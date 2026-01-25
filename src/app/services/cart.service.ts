@@ -1,5 +1,6 @@
 import { Injectable, signal, effect } from '@angular/core';
 import { Product } from '../models/product.model';
+import { DataServices } from './data.services';
 
 const STORAGE_KEY = 'cart';
 
@@ -12,7 +13,7 @@ export class CartService {
   cart = this._cart.asReadonly();
   total: any;
 
-  constructor() {
+  constructor(private dataServices: DataServices) {
     // 🧠 se ejecuta automáticamente cada vez que cambia el cart
     effect(() => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this._cart()));
@@ -21,6 +22,10 @@ export class CartService {
 
   add(product: Product) {
     this._cart.update((current) => [...current, product]);
+  }
+
+  guardarProductos(product: any) {
+    this.dataServices.guardarProductos(product);
   }
 
   clear() {
